@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1,
+    "name": "Marathon",
+    "location": "New York",
+    "date": "2024-01-15",
+    "participants": [
+      {
+        "id": 2,
+        "name": "Adrian",
+        "bio": "hello",
+        "location": "philippine"
+      },
+      {
+        "id": 4,
+        "name": "Adrian",
+        "bio": "",
+        "location": ""
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Triathlon",
+    "location": "San Francisco",
+    "date": "2024-02-20"
+  }
+]

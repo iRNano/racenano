@@ -1,0 +1,86 @@
+[
+  {
+    "id": 2,
+    "name": "Adrian",
+    "email": "asd@asd.com",
+    "password": "$2a$10$6oBFN7LacOHPsOtrLuzdpu/2rXw5rd9ac5/aBElNJjGyfMLy1MNL2",
+    "profile": {
+      "bio": "hello",
+      "location": "philippine",
+      "preferences": {}
+    },
+    "role": "user"
+  },
+  {
+    "id": 3,
+    "name": "Adrian",
+    "email": "test@test.com",
+    "password": "$2a$10$VHaJqPQiRfRGMYT9QSrO5O4fLQXwiVu0KwqCeVsVI27UpuODuBuge",
+    "profile": {
+      "bio": "",
+      "location": "",
+      "preferences": {}
+    },
+    "role": "admin"
+  },
+  {
+    "id": 4,
+    "name": "Adrian",
+    "email": "nano@nano.com",
+    "password": "$2a$10$auDuHsalS4CWE2eg/EqNTe7RZFdx2H8/MaNDsN0BTAeQ3B6yH3rre",
+    "profile": {
+      "bio": "hello",
+      "location": "1234",
+      "preferences": {}
+    },
+    "role": "admin"
+  },
+  {
+    "id": 4,
+    "name": "Adrian",
+    "email": "irsupernano@gmail.com",
+    "password": "$2a$10$6tdcGV6P0ajmcI3QlPyGseScxL4luzZQiKzib97mfOunhj.2E8ldG",
+    "profile": {
+      "bio": "",
+      "location": "",
+      "preferences": {}
+    },
+    "role": "user"
+  },
+  {
+    "id": 5,
+    "name": "Tuguegarao",
+    "email": "tugue@tugue.com",
+    "password": "$2a$10$zzVDasTtR3mKs6HDhAa6fO2mURclQaLehrlNlhgj3p5JPCYjSh8hm",
+    "profile": {
+      "bio": "",
+      "location": "",
+      "preferences": {}
+    },
+    "role": "user"
+  },
+  {
+    "id": 6,
+    "name": "Adrian",
+    "email": "qwe@qwe.com",
+    "password": "$2a$10$FfOueivc5QBmg7ZQKjV0fePzyPGQAar6YL/pI7brtOv31.Ap7HH/O",
+    "profile": {
+      "bio": "",
+      "location": "",
+      "preferences": {}
+    },
+    "role": "user"
+  },
+  {
+    "id": 7,
+    "name": "Adrian",
+    "email": "admin@admin.com",
+    "password": "$2a$10$vfa506rV/BrwM9W1.YcPdOBvX1iauPcF.a3EZFT3ANcCy8kJm9Gii",
+    "profile": {
+      "bio": "hello",
+      "location": "philippine",
+      "preferences": {}
+    },
+    "role": "admin"
+  }
+]
