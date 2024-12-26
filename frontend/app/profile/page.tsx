@@ -1,52 +1,20 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import config from "../config/config";
+import { useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
 
 export default function ProfilePage() {
-  const [formData, setFormData] = useState({
-    bio: "",
-    location: "",
-    preferences: {},
-  });
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
   const { authState } = useAuth();
 
-  const token = localStorage.getItem("userToken");
+  // Initialize formData with the user's profile from context
+  const [formData, setFormData] = useState({
+    bio: authState.user?.profile?.bio || "",
+    location: authState.user?.profile?.location || "",
+    preferences: authState.user?.profile?.preferences || {},
+  });
 
-  useEffect(() => {
-    const fetchProfile = async () => {
-      if (!token) {
-        setError("Unauthorized access. Please log in.");
-        return;
-      }
-
-      try {
-        const response = await fetch(
-          `${config.apiBaseUrl}/api/users/${authState.user?.id}`,
-          {
-            headers: { Authorization: `Bearer ${token}` },
-          }
-        );
-
-        if (!response.ok) {
-          throw new Error("Failed to fetch profile");
-        }
-
-        const data = await response.json();
-        console.log(data);
-        setFormData(data);
-      } catch (err: unknown) {
-        if (err instanceof Error)
-          return setError(err.message || "Something went wrong");
-        setError("Error encountered");
-      }
-    };
-
-    fetchProfile();
-  }, [token]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -58,8 +26,13 @@ export default function ProfilePage() {
   const handleSave = async () => {
     setIsLoading(true);
     try {
+      const token = localStorage.getItem("userToken");
+      if (!token) {
+        throw new Error("Unauthorized access. Please log in.");
+      }
+
       const response = await fetch(
-        `${config.apiBaseUrl}/api/users/${authState.user?.id}`,
+        `/api/users/${authState.user?.id}`, // Use the user ID from authState
         {
           method: "PUT",
           headers: {

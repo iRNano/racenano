@@ -2,27 +2,50 @@
   {
     "id": 1,
     "name": "Marathon",
-    "location": "New York",
+    "description": "Experience the thrill of a marathon in the heart of New York City.",
     "date": "2024-01-15",
+    "location": "New York",
+    "photo": "https://example.com/photos/marathon.jpg",
+    "type": "Run",
+    "categories": ["5k", "10k", "21k", "42k"],
+    "mechanics": "Participants must complete the course within the allocated time.",
+    "paymentOptions": ["Credit Card", "PayPal"],
+    "registrationDeadline": "2024-01-10",
+    "prizes": "Top 3 finishers receive cash prizes and medals.",
+    "eventSchedule": "Check-in starts at 6 AM; race begins at 7 AM.",
+    "mapRoute": "https://example.com/routes/marathon-map.jpg",
+    "contactInfo": {
+      "email": "info@nycmarathon.com",
+      "phone": "123-456-7890"
+    },
     "participants": [
       {
         "id": 2,
         "name": "Adrian",
         "bio": "hello",
-        "location": "philippine"
-      },
-      {
-        "id": 4,
-        "name": "Adrian",
-        "bio": "",
-        "location": ""
+        "location": "Philippine"
       }
     ]
   },
   {
     "id": 2,
     "name": "Triathlon",
+    "description": "Challenge yourself with a triathlon in San Francisco.",
+    "date": "2024-02-20",
     "location": "San Francisco",
-    "date": "2024-02-20"
+    "photo": "https://example.com/photos/triathlon.jpg",
+    "type": "Triathlon",
+    "categories": ["Sprint", "Olympic", "Half Ironman", "Full Ironman"],
+    "mechanics": "Athletes must complete swimming, cycling, and running sections in sequence.",
+    "paymentOptions": ["Credit Card", "Wire Transfer"],
+    "registrationDeadline": "2024-02-15",
+    "prizes": "Top 3 finishers receive trophies and sponsored prizes.",
+    "eventSchedule": "Check-in starts at 5 AM; race begins at 6 AM.",
+    "mapRoute": "https://example.com/routes/triathlon-map.jpg",
+    "contactInfo": {
+      "email": "info@sfttriathlon.com",
+      "phone": "987-654-3210"
+    },
+    "participants": []
   }
 ]

@@ -123,6 +123,9 @@ export const createRace = (req, res) => {
     name,
     description,
     date,
+    type,
+    categories,
+    photo,
     participants: [],
   };
 

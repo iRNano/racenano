@@ -48,21 +48,22 @@ export const getUsers = async (req, res) => {
   }
 };
 
-export const getProfile = async (req, res) => {
-  const userId = req.user.id; // Assumes token middleware sets `req.user`
+export const getCurrentUser = async (req, res) => {
+  // const userId = req.user.id; // Assumes token middleware sets `req.user`
 
   try {
     await ensureCache();
+    const userId = req.user.id;
     const user = cachedUsers.find((u) => u.id === userId);
 
     if (!user) {
-      return res.status(404).json({ error: "Profile not found" });
+      return res.status(404).json({ error: "User not found" });
     }
 
-    res.json(user.profile);
+    res.json(user);
   } catch (error) {
-    console.error("Error retrieving profile:", error);
-    res.status(500).json({ error: "Failed to retrieve profile" });
+    console.error("Error retrieving current user:", error);
+    res.status(500).json({ error: "Failed to retrieve current user" });
   }
 };
 

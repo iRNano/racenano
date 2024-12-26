@@ -14,6 +14,11 @@ interface UserData {
   id: number;
   email: "";
   role: "admin" | "user" | "";
+  profile: {
+    bio: string;
+    location: string;
+    preferences: Record<string, string>;
+  };
 }
 interface AuthContextType {
   authState: {
@@ -42,7 +47,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     try {
       const token = localStorage.getItem("userToken");
       if (token) {
-        const response = await fetch(`${config.apiBaseUrl}/api/user`, {
+        const response = await fetch(`${config.apiBaseUrl}/api/users/current`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

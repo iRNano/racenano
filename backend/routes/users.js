@@ -1,7 +1,7 @@
 import express from "express";
 import {
   getUsers,
-  getProfile,
+  getCurrentUser,
   updateProfile,
 } from "../controllers/usersController.js";
 import { authenticateToken } from "../middleware/authenticateToken.js";
@@ -9,7 +9,7 @@ import { authenticateToken } from "../middleware/authenticateToken.js";
 const router = express.Router();
 
 router.get("/", authenticateToken, getUsers);
-router.get("/:id", authenticateToken, getProfile);
+router.get("/current", authenticateToken, getCurrentUser);
 router.put("/:id", authenticateToken, updateProfile);
 
 export default router;

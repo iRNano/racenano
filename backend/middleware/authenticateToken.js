@@ -18,7 +18,8 @@ export const authenticateToken = (req, res, next) => {
       return res.status(403).json({ error: "Invalid token" });
     }
 
-    req.user = user; // Attach the decoded token data to the request object
+    req.user = user;
+    console.log(req.user); // Attach the decoded token data to the request object
     next(); // Pass control to the next middleware/handler
   });
 };
