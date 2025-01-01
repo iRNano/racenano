@@ -91,3 +91,41 @@ export const updateProfile = async (req, res) => {
     res.status(500).json({ error: "Failed to update profile" });
   }
 };
+
+export const getUserRegistrations = async (req, res) => {
+  try {
+    await ensureCache();
+    const userId = req.user.id;
+    const user = cachedUsers.find((u) => u.id === userId);
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Assuming `registeredRaces` is a field in the user object
+    const registrations = user.registeredRaces || [];
+    res.status(200).json(registrations);
+  } catch (error) {
+    console.error("Error retrieving user registrations:", error);
+    res.status(500).json({ error: "Failed to retrieve registrations" });
+  }
+};
+
+export const getUserResults = async (req, res) => {
+  try {
+    await ensureCache();
+    const userId = req.user.id;
+    const user = cachedUsers.find((u) => u.id === userId);
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Assuming `results` is a field in the user object
+    const results = user.results || [];
+    res.status(200).json(results);
+  } catch (error) {
+    console.error("Error retrieving user results:", error);
+    res.status(500).json({ error: "Failed to retrieve results" });
+  }
+};

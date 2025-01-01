@@ -4,12 +4,31 @@
     "name": "Adrian",
     "email": "asd@asd.com",
     "password": "$2a$10$6oBFN7LacOHPsOtrLuzdpu/2rXw5rd9ac5/aBElNJjGyfMLy1MNL2",
+    "gender": "male",
     "profile": {
       "bio": "hello",
-      "location": "philippine",
+      "location": "Philippine",
       "preferences": {}
     },
-    "role": "user"
+    "role": "user",
+    "registeredRaces": [
+      {
+        "raceId": 1,
+        "category": "21k",
+        "status": "Registered",
+        "registrationDate": "2023-12-20",
+        "paymentStatus": "Paid"
+      }
+    ],
+    "results": [
+      {
+        "raceId": 1,
+        "category": "21k",
+        "finishTime": "1:45:32",
+        "position": 5,
+        "date": "2024-01-15"
+      }
+    ]
   },
   {
     "id": 3,

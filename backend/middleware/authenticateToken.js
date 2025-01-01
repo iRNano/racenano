@@ -14,12 +14,21 @@ export const authenticateToken = (req, res, next) => {
 
   jwt.verify(token, secretKey, (err, user) => {
     if (err) {
-      console.error("JWT Verification failed:", err); // Log the error if token is invalid
+      console.error("JWT Verification failed:", err); // Log the error if token is invalid or expired
+      if (err.name === "TokenExpiredError") {
+        return res.status(401).json({ error: "Token expired" });
+      }
       return res.status(403).json({ error: "Invalid token" });
     }
 
-    req.user = user;
-    console.log(req.user); // Attach the decoded token data to the request object
+    const currentTime = Math.floor(Date.now() / 1000); // Current time in seconds
+    if (user.exp && user.exp < currentTime) {
+      console.error("Token is expired");
+      return res.status(401).json({ error: "Token expired" });
+    }
+
+    req.user = user; // Attach the decoded token data to the request object
+    console.log("User authenticated:", req.user);
     next(); // Pass control to the next middleware/handler
   });
 };

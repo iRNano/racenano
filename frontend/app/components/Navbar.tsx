@@ -13,8 +13,8 @@ const Navbar = () => {
     window.location.href = "/";
   };
 
-  console.log("isAdmin", authState?.user);
-  console.log("isAdmin", isAdmin);
+  // console.log("isAdmin", authState?.user);
+  // console.log("isAdmin", isAdmin);
 
   return (
     <nav className="bg-blue-600 text-white p-4 shadow-md font-sans">
