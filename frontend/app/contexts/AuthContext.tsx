@@ -51,6 +51,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   // Fetch user data from API or local storage on initial render
   const initializeUser = async () => {
+    console.log("herro");
     try {
       const token = localStorage.getItem("userToken");
       if (token) {
@@ -69,6 +70,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
             loading: false,
           });
         } else {
+          localStorage.removeItem("userToken");
           setAuthState({
             isAuthenticated: false,
             user: null,

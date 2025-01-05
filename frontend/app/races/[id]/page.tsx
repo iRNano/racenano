@@ -57,7 +57,6 @@ const RaceDetailsPage = ({ params }: { params: { id: string } }) => {
       return;
     }
     if (!user.isVerified) {
-      console.log("hell no");
       toast.error(
         "Please verify your email address to proceed with registration."
       );
@@ -86,7 +85,6 @@ const RaceDetailsPage = ({ params }: { params: { id: string } }) => {
 
   return (
     <div className="max-w-3xl mx-auto mt-10 p-5 border rounded-md shadow-lg">
-      <ToastContainer />
       <h1 className="text-3xl font-bold mb-5">{raceDetails.name}</h1>
       <p className="mb-4">{raceDetails.description}</p>
 
@@ -158,6 +156,7 @@ const RaceDetailsPage = ({ params }: { params: { id: string } }) => {
           Register for Race
         </button>
       </div>
+      <ToastContainer />
     </div>
   );
 };
