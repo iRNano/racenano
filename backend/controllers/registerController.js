@@ -18,15 +18,34 @@ const saveUsers = (users) => {
 };
 
 export const registerUser = async (req, res) => {
-  const { name, email, password } = req.body;
+  const {
+    firstName,
+    lastName,
+    email,
+    password,
+    confirmPassword,
+    bio,
+    location,
+    role,
+  } = req.body;
 
-  if (!name || !email) {
-    return res.status(400).json({ error: "Name and email are required." });
+  // Validate required fields
+  if (!firstName || !lastName || !email || !password || !confirmPassword) {
+    return res
+      .status(400)
+      .json({ error: "Name, email, password, and confirmation are required." });
+  }
+
+  console.log("register", role);
+  // Check password confirmation
+  if (password !== confirmPassword) {
+    return res.status(400).json({ error: "Passwords do not match." });
   }
 
   const users = getUsers();
   const existingUser = users.find((user) => user.email === email);
 
+  // Check for existing user
   if (existingUser) {
     return res.status(400).json({ error: "Email is already registered." });
   }
@@ -37,16 +56,20 @@ export const registerUser = async (req, res) => {
 
     const newUser = {
       id: users.length + 1,
-      name,
+      firstName,
+      lastName,
       email,
       password: hashedPassword, // Save the hashed password
       profile: {
-        bio: "",
-        location: "",
-        preferences: {},
+        bio: bio || "", // Default empty if not provided
+        location: location || "", // Default empty if not provided
+        preferences: {}, // Default preferences
       },
+      role: role || "regular",
+      verified: false, // Default role is "regular" if not provided
     };
 
+    // Add new user to the list and save
     users.push(newUser);
     saveUsers(users);
 

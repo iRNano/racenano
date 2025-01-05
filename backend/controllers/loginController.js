@@ -41,12 +41,7 @@ export const loginUser = (req, res) => {
     res.status(200).json({
       message: "Login successful",
       token, // Send the token to the frontend
-      user: {
-        id: user.id,
-        name: user.name,
-        email: user.email,
-        role: user.role,
-      },
+      user,
     });
   });
 };

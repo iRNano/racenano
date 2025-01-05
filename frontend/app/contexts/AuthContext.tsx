@@ -10,15 +10,22 @@ import {
 import config from "../config/config";
 
 interface UserData {
-  name: "";
+  firstName: "";
+  lastName: "";
   id: number;
   email: "";
   role: "admin" | "user" | "";
   profile: {
     bio: string;
     location: string;
+    profilePicture: string;
+    phone: string;
+    birthDate: string;
+    socialLinks: string[];
+    interests: string[];
     preferences: Record<string, string>;
   };
+  isVerified: boolean;
 }
 interface AuthContextType {
   authState: {
@@ -55,6 +62,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
         if (response.ok) {
           const userData = await response.json();
+          console.log("initialize user", userData);
           setAuthState({
             isAuthenticated: true,
             user: userData,

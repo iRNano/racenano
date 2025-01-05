@@ -82,5 +82,44 @@
       "preferences": {}
     },
     "role": "admin"
+  },
+  {
+    "id": 8,
+    "firstName": "new ",
+    "lastName": "user",
+    "email": "new@user.com",
+    "password": "$2a$10$sRTfP5bfefW04wDcGFHVBOiRV69uZ4Egci46qi.qUW8dWqYaiIsyK",
+    "profile": {
+      "bio": "",
+      "location": "",
+      "preferences": {}
+    },
+    "role": "organizer"
+  },
+  {
+    "id": 9,
+    "firstName": "qwe",
+    "lastName": "rty",
+    "email": "qwe@rty.com",
+    "password": "$2a$10$GAj0OGlNxuS8iVxXfYmE1e6RJkFoX0xDs4cjG4.fXjbfA8tfuN2/6",
+    "profile": {
+      "bio": "",
+      "location": "",
+      "preferences": {}
+    },
+    "role": "regular"
+  },
+  {
+    "id": 10,
+    "firstName": "asd",
+    "lastName": "qwe",
+    "email": "asd@qwe.com",
+    "password": "$2a$10$wop2JHNs3UgiaWqdcjX3euzkLdNc4LykPXqNm4h7Ovz5eV7fYjbRa",
+    "profile": {
+      "bio": "",
+      "location": "",
+      "preferences": {}
+    },
+    "role": "regular"
   }
 ]
