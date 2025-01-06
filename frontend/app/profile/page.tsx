@@ -5,6 +5,7 @@ import { useAuth } from "../contexts/AuthContext";
 
 export default function ProfilePage() {
   const { authState } = useAuth();
+  const isVerified = authState.user?.isVerified || false; // Check if user is verified
 
   // Initialize formData with the user's profile from context
   const [formData, setFormData] = useState({
@@ -19,6 +20,13 @@ export default function ProfilePage() {
     socialLinks: authState.user?.profile?.socialLinks || "",
     interests: authState.user?.profile?.interests || [],
     preferences: authState.user?.profile?.preferences || {},
+    address: {
+      street: authState.user?.profile?.address?.street || "",
+      city: authState.user?.profile?.address?.city || "",
+      state: authState.user?.profile?.address?.state || "",
+      zipCode: authState.user?.profile?.address?.zipCode || "",
+      country: authState.user?.profile?.address?.country || "",
+    },
   });
 
   const [isLoading, setIsLoading] = useState(false);
@@ -28,7 +36,16 @@ export default function ProfilePage() {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+
+    if (name.includes("address.")) {
+      const field = name.split(".")[1];
+      setFormData({
+        ...formData,
+        address: { ...formData.address, [field]: value },
+      });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
   };
 
   const handleSave = async () => {
@@ -69,145 +86,96 @@ export default function ProfilePage() {
     <div className="max-w-lg mx-auto mt-10 p-5 border rounded-md shadow-lg">
       <h1 className="text-2xl font-bold mb-5 text-center">Your Profile</h1>
       {error && <p className="text-red-600 mb-4">{error}</p>}
-
+      {/* Personal Information */}
       <div className="mb-4">
         <label className="block mb-2 font-semibold">First Name</label>
         <input
           type="text"
-          name="name"
+          name="firstName"
           value={formData.firstName}
           onChange={handleInputChange}
           className="w-full p-2 border rounded-md"
+          disabled={!isVerified}
         />
       </div>
       <div className="mb-4">
         <label className="block mb-2 font-semibold">Last Name</label>
         <input
           type="text"
-          name="name"
+          name="lastName"
           value={formData.lastName}
           onChange={handleInputChange}
           className="w-full p-2 border rounded-md"
+          disabled={!isVerified}
         />
       </div>
-
+      {/* Address Section */}
+      <h2 className="text-lg font-bold mt-5 mb-3">Address</h2>
       <div className="mb-4">
-        <label className="block mb-2 font-semibold">Email</label>
-        <input
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleInputChange}
-          className="w-full p-2 border rounded-md"
-        />
-      </div>
-
-      <div className="mb-4">
-        <label className="block mb-2 font-semibold">Phone</label>
+        <label className="block mb-2 font-semibold">Street</label>
         <input
           type="text"
-          name="phone"
-          value={formData.phone}
+          name="address.street"
+          value={formData.address.street}
           onChange={handleInputChange}
           className="w-full p-2 border rounded-md"
+          disabled={!isVerified}
         />
       </div>
-
       <div className="mb-4">
-        <label className="block mb-2 font-semibold">Profile Picture URL</label>
+        <label className="block mb-2 font-semibold">City</label>
         <input
           type="text"
-          name="profilePicture"
-          value={formData.profilePicture}
+          name="address.city"
+          value={formData.address.city}
           onChange={handleInputChange}
           className="w-full p-2 border rounded-md"
+          disabled={!isVerified}
         />
       </div>
-
       <div className="mb-4">
-        <label className="block mb-2 font-semibold">Birth Date</label>
-        <input
-          type="date"
-          name="birthDate"
-          value={formData.birthDate}
-          onChange={handleInputChange}
-          className="w-full p-2 border rounded-md"
-        />
-      </div>
-
-      {/* <div className="mb-4">
-        <label className="block mb-2 font-semibold">Bio</label>
-        <textarea
-          name="bio"
-          value={formData.bio}
-          onChange={handleInputChange}
-          className="w-full p-2 border rounded-md"
-        />
-      </div> */}
-
-      <div className="mb-4">
-        <label className="block mb-2 font-semibold">Location</label>
+        <label className="block mb-2 font-semibold">State</label>
         <input
           type="text"
-          name="location"
-          value={formData.location}
+          name="address.state"
+          value={formData.address.state}
           onChange={handleInputChange}
           className="w-full p-2 border rounded-md"
+          disabled={!isVerified}
         />
       </div>
-
       <div className="mb-4">
-        <label className="block mb-2 font-semibold">
-          Social Links (Comma Separated)
-        </label>
+        <label className="block mb-2 font-semibold">Zip Code</label>
         <input
           type="text"
-          name="socialLinks"
-          value={formData.socialLinks}
+          name="address.zipCode"
+          value={formData.address.zipCode}
           onChange={handleInputChange}
           className="w-full p-2 border rounded-md"
+          disabled={!isVerified}
         />
       </div>
-
       <div className="mb-4">
-        <label className="block mb-2 font-semibold">
-          Interests (Comma Separated)
-        </label>
+        <label className="block mb-2 font-semibold">Country</label>
         <input
           type="text"
-          name="interests"
-          value={formData.interests.join(", ")}
-          onChange={(e) =>
-            setFormData({
-              ...formData,
-              interests: e.target.value
-                .split(",")
-                .map((interest) => interest.trim()),
-            })
-          }
+          name="address.country"
+          value={formData.address.country}
+          onChange={handleInputChange}
           className="w-full p-2 border rounded-md"
+          disabled={!isVerified}
         />
       </div>
-
-      <div className="mb-4">
-        <label className="block mb-2 font-semibold">Preferences</label>
-        <textarea
-          name="preferences"
-          value={JSON.stringify(formData.preferences, null, 2)}
-          onChange={(e) =>
-            setFormData({
-              ...formData,
-              preferences: JSON.parse(e.target.value),
-            })
-          }
-          className="w-full p-2 border rounded-md"
-        />
-      </div>
-
+      {/* Other Fields */}
+      {/* Include existing fields like socialLinks, interests, and preferences here */}
       <button
         onClick={handleSave}
-        className="w-full bg-green-600 text-white py-2 rounded-md hover:bg-green-700"
-        disabled={isLoading}
+        className={`w-full py-2 rounded-md text-white ${
+          isLoading || !isVerified
+            ? "bg-gray-400 cursor-not-allowed pointer-events-none"
+            : "bg-green-600 hover:bg-green-700"
+        }`}
+        disabled={isLoading || !isVerified}
       >
         {isLoading ? "Saving..." : "Save Changes"}
       </button>

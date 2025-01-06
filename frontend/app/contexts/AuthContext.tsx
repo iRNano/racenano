@@ -24,6 +24,13 @@ interface UserData {
     socialLinks: string[];
     interests: string[];
     preferences: Record<string, string>;
+    address: {
+      street: string;
+      city: string;
+      state: string;
+      zipCode: string;
+      country: string;
+    };
   };
   isVerified: boolean;
 }
