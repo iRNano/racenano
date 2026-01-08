@@ -12,11 +12,11 @@ const Navbar = () => {
   return (
     <AppBar position="static">
       <Toolbar>
-        {/* Logo Placeholder - links to dashboard */}
+        {/* Logo Placeholder - links to home */}
         <Typography variant="h6" component="div" sx={{ flexShrink: 0, mr: 4 }}>
           <MuiLink
             component={Link}
-            href="/dashboard"
+            href="/"
             color="inherit"
             underline="none"
             sx={{ display: 'flex', alignItems: 'center' }}
@@ -47,7 +47,7 @@ const Navbar = () => {
           <Button
             color="inherit"
             component={Link}
-            href="/login"
+            href="/auth/login"
           >
             Login
           </Button>
@@ -55,7 +55,7 @@ const Navbar = () => {
             color="secondary"
             variant="contained"
             component={Link}
-            href="/signup"
+            href="/auth/signup"
             sx={{ ml: 1 }}
           >
             Signup

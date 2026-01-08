@@ -9,7 +9,6 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
-import Navbar from "@repo/ui/Navbar";
 
 const races = [
   {
@@ -39,12 +38,7 @@ export default function Home() {
 
   return (
     <Box sx={{ position: "relative", minHeight: "100vh", bgcolor: "zinc.50", fontFamily: "sans-serif" }}>
-      {/* Fixed Navbar */}
-      <Box sx={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 1300 }}>
-        <Navbar />
-      </Box>
-
-      <Container maxWidth="lg" sx={{ pt: 14, pb: 0 }}>
+      <Container maxWidth="lg" sx={{ pt: 4, pb: 0 }}>
         {/* Hero Section */}
         <Box
           component="section"
@@ -253,7 +247,7 @@ export default function Home() {
           </Typography>
           <Button
             component={Link}
-            href="/organizers/create"
+            href="/auth/signup"
             size="large"
             sx={{
               borderRadius: 9999,
