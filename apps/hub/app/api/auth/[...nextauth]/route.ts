@@ -1,9 +1,16 @@
 import NextAuth from 'next-auth';
-// import GoogleProvider from 'next-auth/providers/google';
-// import FacebookProvider from 'next-auth/providers/facebook';
-// import CredentialsProvider from 'next-auth/providers/credentials';
 import { authOptions } from '../authOptions';
-const handler = NextAuth(authOptions);
+import { NextRequest, NextResponse } from 'next/server';
+interface RouteHandlerContext {
+  params: Promise<{ nextauth: string[] }>;
+}
+
+const handler = async (req: NextRequest, context: RouteHandlerContext) => {
+  // Await params to satisfy Next.js 15 requirements
+  await context.params; 
+  const res = NextResponse.json(await NextAuth(authOptions));
+  return res;
+};
 
 export { handler as GET, handler as POST };
 

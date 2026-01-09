@@ -3,12 +3,12 @@
   "private": true,
   "scripts": {
     "build": "turbo run build",
+    "build:hub": "turbo run build --filter=hub",
+    "build:time": "turbo run build --filter=time",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "dev:hub": "turbo run dev --filter=hub",
-    "dev:web": "turbo run dev --filter=web",
     "dev:time": "turbo run dev --filter=time",
-    "dev:docs": "turbo run dev --filter=docs",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types"
   },

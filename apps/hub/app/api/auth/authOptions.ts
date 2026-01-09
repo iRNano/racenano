@@ -88,5 +88,3 @@ export const authOptions: NextAuthConfig = {
     },
     secret: process.env.NEXTAUTH_SECRET,
   }
-
-  export { authOptions as GET, authOptions as POST };
